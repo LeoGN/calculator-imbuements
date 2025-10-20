@@ -10,7 +10,7 @@
     <div class="calculator-container">
         <h1>Custo de Imbuement por Minuto</h1>
         
-        <label for="goldTokens">1. Preço Unitário do Gold Token (GPs):</label>
+        <label for="goldTokensPrice">1. Preço Unitário do Gold Token (GPs):</label>
         <input type="number" id="goldTokensPrice" value="18000"> 
 
         <label for="qtyImbuements">2. Quantidade de Imbuements (1, 2, ou 3):</label>
@@ -18,13 +18,16 @@
 
         <label for="gtUsed">3. Gold Tokens Usados (Total):</label>
         <input type="number" id="gtUsed" value="45" min="0"> 
-        <label for="itemsCost">4. Custo dos Itens de Criatura (em GPs):</label>
-        <input type="number" id="itemsCost" value="0"> 
-        <button onclick="calculateCost()">Calcular Custo por Minuto</button>
+        
+        <label for="timeSpentMinutes">4. Tempo Gasto (em Minutos) para Calcular Custo Total Real:</label>
+        <input type="number" id="timeSpentMinutes" value="1200" min="0"> 
+
+        <button onclick="calculateCost()">Calcular Custo</button>
         
         <h2>Resultado:</h2>
-        <p>Custo Total do Imbuement (20h): <span id="totalCost">0</span> GPs</p>
+        <p>Custo Total Base do Imbuement (20h): <span id="baseTotalCost">0</span> GPs</p>
         <p>Custo por Minuto (GPs/min): <span id="costPerMinute">0</span> GPs</p>
+        <p>Custo Total Real com Tempo Gasto: <span id="realTotalCost">0</span> GPs</p>
     </div>
 
     <script src="script.js"></script>
