@@ -1,27 +1,19 @@
-</head>
-<body>
-    <h1>Calculadora de Custo por Minuto de Imbuement</h1>
-    
-    <p>Insira os valores atuais do seu servidor:</p>
+# ⚔️ Calculadora de Custo de Imbuement no Tibia 🛡️
 
-    <label for="qtd_gt">1. Quantidade de Gold Tokens utilizados:</label>
-    <input type="number" id="qtd_gt" value="6" placeholder="Ex: 6">
+Uma ferramenta simples para calcular o custo por minuto de um ou mais Imbuements no Tibia, ajudando a planejar seus gastos de caça.
 
-    <label for="valor_gt">2. Valor de cada Gold Token (gp):</label>
-    <input type="number" id="valor_gt" placeholder="Ex: 30000">
-    
-    <label for="qtd_imbuements">3. Quantidade de Imbuements que fará:</label>
-    <input type="number" id="qtd_imbuements" value="1" min="1" placeholder="Ex: 1+"> 
+## 🚀 Como Funciona
 
-    <label for="duracao_horas">4. Duração Total do Imbuement (horas):</label>
-    <input type="number" id="duracao_horas" value="20" placeholder="Padrão é 20h">
-    
-    <br>
-    
-    <button onclick="calcularCustoPorMinuto()">Calcular Custo por Minuto</button>
+A calculadora utiliza uma fórmula baseada no custo dos **Gold Tokens** e na **Taxa de Imbuement**.
 
-    <div id="resultado">Insira os valores acima e clique em "Calcular Custo por Minuto".</div>
+### 🔍 Fórmula de Cálculo
 
-    <script src="script.js"></script>
-</body>
-</html>
+1.  **Custo Total do Imbuement**
+    $$\text{Custo Total} = (\text{Quantidade de Imbuements} \times \text{Preço do Gold Token} \times 20) + (\text{Quantidade de Imbuements} \times 250.000 \text{ gold})$$
+
+    * *Nota:* Cada Imbuement exige 20 Gold Tokens.
+2.  **Duração Total**
+    * Cada Imbuement dura 20 horas ($$1200$$ minutos).
+    * $$\text{Duração Total (minutos)} = \text{Quantidade de Imbuements} \times 1200$$
+3.  **Custo por Minuto**
+    $$\text{Custo por Minuto} = \frac{\text{Custo Total}}{\text{Duração Total (minutos)}}$$
