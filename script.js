@@ -5,10 +5,9 @@ function calcularCustoPorMinuto() {
     // 1. Coletar os valores de entrada do HTML
     const qtdGoldTokens = parseFloat(document.getElementById('qtd_gt').value);
     const valorGoldToken = parseFloat(document.getElementById('valor_gt').value);
-    // A taxa de serviço manual (taxa_imbuement) é ignorada no cálculo, mas o campo é lido
     const duracaoHoras = parseFloat(document.getElementById('duracao_horas').value);
     
-    // Campo crucial para a nova regra
+    // O campo 3 (id='qtd_imbuements') agora é usado para a quantidade de imbuements
     const qtdImbuements = parseInt(document.getElementById('qtd_imbuements').value);
     
     const resultadoElement = document.getElementById('resultado');
@@ -20,16 +19,15 @@ function calcularCustoPorMinuto() {
         return;
     }
 
-    // 3. Cálculo da Taxa Total do Serviço (NOVA REGRA)
+    // 3. Cálculo da Taxa Total do Serviço (250k * Qtd Imbuements)
     const taxaServicoTotal = CUSTO_BASE_TAXA_POR_IMBUE * qtdImbuements;
 
     // 4. Conversão e Cálculo
 
-    // Duração total em minutos (multiplica pela quantidade de imbuements)
+    // Duração total em minutos (Duração por imbue * 60 minutos * quantidade de imbuements)
     const duracaoTotalMinutos = duracaoHoras * 60 * qtdImbuements; 
 
     // Custo total dos Gold Tokens (Material)
-    // Custo por imbue * valor do GT * quantidade de imbuements
     const custoGoldTokensTotal = qtdGoldTokens * valorGoldToken * qtdImbuements;
 
     // Custo total final (Materiais totais + Taxa total de serviço)
