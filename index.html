@@ -1,95 +1,40 @@
-!DOCTYPE html
-html lang=pt-BR
-head
-  meta charset=UTF-8
-  titleCalculadora de Gold Token - Tibiatitle
-  style
-    body {
-      font-family Arial, sans-serif;
-      background-color #1a1a1a;
-      color #f2f2f2;
-      display flex;
-      flex-direction column;
-      align-items center;
-      padding 20px;
-    }
-    .card {
-      background #2a2a2a;
-      border-radius 10px;
-      padding 20px;
-      max-width 400px;
-      width 100%;
-      box-shadow 0 0 10px rgba(0,0,0,0.4);
-    }
-    input {
-      width 100%;
-      padding 8px;
-      margin-top 5px;
-      margin-bottom 10px;
-      border-radius 5px;
-      border none;
-    }
-    button {
-      width 100%;
-      padding 10px;
-      border none;
-      border-radius 5px;
-      background-color #4CAF50;
-      color white;
-      font-weight bold;
-      cursor pointer;
-    }
-    buttonhover {
-      background-color #45a049;
-    }
-    h2 {
-      text-align center;
-    }
-    .resultado {
-      margin-top 15px;
-      font-size 18px;
-      text-align center;
-    }
-  style
-head
-body
-  div class=card
-    h2💰 Calculadora de Gold Token (Tibia)h2
 
-    labelQuantidade de Gold Tokenslabel
-    input type=number id=tokens placeholder=Ex 10
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Custo por Minuto (Imbuement)</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        input { margin-bottom: 10px; padding: 8px; width: 200px; display: block; }
+        label { font-weight: bold; display: block; margin-top: 10px; }
+        button { padding: 10px 15px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        #resultado { margin-top: 20px; padding: 15px; border: 1px solid #ccc; background-color: #f9f9f9; }
+    </style>
+</head>
+<body>
+    <h1>Calculadora de Custo por Minuto de Imbuement</h1>
+    
+    <p>Insira os valores atuais do seu servidor:</p>
 
-    labelValor de cada Token (em gold)label
-    input type=number id=valorToken placeholder=Ex 30000
+    <label for="qtd_gt">1. Quantidade de Gold Tokens para o Imbuement:</label>
+    <input type="number" id="qtd_gt" value="6" placeholder="Ex: 6 para um T3">
 
-    labelQuantidade de Imbuementslabel
-    input type=number id=imbuements placeholder=Ex 3
+    <label for="valor_gt">2. Valor de Venda de 1 Gold Token (gp):</label>
+    <input type="number" id="valor_gt" placeholder="Ex: 30000">
+    
+    <label for="taxa_imbuement">3. Taxa de Serviço para Fazer o Imbuement (gp):</label>
+    <input type="number" id="taxa_imbuement" value="50000" placeholder="Ex: 50000">
+    
+    <label for="duracao_horas">4. Duração Total do Imbuement (horas):</label>
+    <input type="number" id="duracao_horas" value="20" placeholder="Padrão é 20h para T3">
 
-    labelDuração da caçada (em minutos)label
-    input type=number id=minutos placeholder=Ex 60
+    <br>
+    
+    <button onclick="calcularCustoPorMinuto()">Calcular Custo por Minuto</button>
 
-    button onclick=calcular()Calcularbutton
+    <div id="resultado">Insira os valores acima e clique em "Calcular Custo por Minuto".</div>
 
-    div class=resultado id=resultadodiv
-  div
-
-  script
-    function calcular() {
-      const tokens = parseFloat(document.getElementById('tokens').value)  0;
-      const valorToken = parseFloat(document.getElementById('valorToken').value)  0;
-      const imbuements = parseFloat(document.getElementById('imbuements').value)  0;
-      const minutos = parseFloat(document.getElementById('minutos').value)  1;
-
-      const custoTokens = tokens  valorToken;
-      const custoImbuements = imbuements  250000;
-      const custoTotal = custoTokens + custoImbuements;
-      const custoPorMinuto = custoTotal  minutos;
-
-      document.getElementById('resultado').innerHTML = `
-        💸 bCusto Totalb ${custoTotal.toLocaleString('pt-BR')} goldbr
-        ⏱️ bCusto por Minutob ${custoPorMinuto.toLocaleString('pt-BR', {minimumFractionDigits 2})} goldmin
-      `;
-    }
-  script
-body
-html
+    <script src="script.js"></script>
+</body>
+</html>
