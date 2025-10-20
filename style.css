@@ -1,14 +1,12 @@
-/* --- TIBIA THEME: Cores escuras, bordas grossas, fontes de RPG --- */
+/* --- TEMA RPG/ESCURO COM FLEXBOX PARA CAMPOS LADO A LADO --- */
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
-/* Importa uma fonte estilo monospaced/pixel art, ideal para um tema de RPG/Console */
 
 body {
-    /* Fundo sutil de "pedra" ou "pergaminho" */
-    background-color: #333; /* Cor de backup */
+    background-color: #333; 
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><rect fill="#444444" width="20" height="20"/><rect x="0" y="0" width="10" height="10" fill="#555555"/><rect x="10" y="10" width="10" height="10" fill="#555555"/></svg>');
-    color: #f0e6d2; /* Cor de texto claro, como pergaminho */
-    font-family: 'Roboto Mono', monospace; /* Fonte com tema de console */
+    color: #f0e6d2; 
+    font-family: 'Roboto Mono', monospace; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,54 +15,64 @@ body {
 }
 
 .calculator-container {
-    /* Fundo escuro como uma janela do cliente Tibia */
     background-color: #2e2e2e; 
     padding: 30px;
-    border-radius: 4px; /* Bordas mais quadradas */
-    /* Sombra interna para dar um efeito de profundidade de janela de UI */
+    border-radius: 4px; 
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5), inset 0 0 5px rgba(255, 255, 255, 0.1); 
-    border: 3px solid #5d4037; /* Borda grossa de madeira/ferro */
+    border: 3px solid #5d4037; 
     width: 90%;
     max-width: 450px;
 }
 
 h1 {
-    /* Título em cor de destaque */
-    color: #ffcc66; /* Cor dourada/amarelada */
+    color: #ffcc66; 
     text-align: center;
     border-bottom: 2px solid #5d4037;
     padding-bottom: 10px;
 }
 
-label {
-    display: block;
+/* --- NOVO ESTILO PARA COLOCAR LABEL E INPUT LADO A LADO --- */
+.input-group {
+    display: flex;
+    justify-content: space-between; /* Espalha a label e o input */
+    align-items: center; /* Alinha verticalmente */
     margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+label {
+    /* Ocupa o máximo de espaço possível para a descrição */
+    flex-grow: 1; 
     font-weight: bold;
-    color: #a8a8a8; /* Cinza claro para o texto */
+    color: #a8a8a8; 
     font-size: 0.95em;
+    margin-right: 15px; /* Espaço entre label e input */
+    margin-top: 0; /* Remove margem superior da label, já controlada pelo input-group */
 }
 
 input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    background-color: #1a1a1a; /* Fundo do input bem escuro */
-    color: #ffffff; /* Texto do input branco */
+    /* Define uma largura fixa e pequena para o input, alinhando-o à direita */
+    width: 100px; 
+    padding: 8px; /* Menor padding para caber na linha */
+    background-color: #1a1a1a; 
+    color: #ffffff; 
     border: 1px solid #5d4037;
     border-radius: 2px;
     box-sizing: border-box; 
     transition: border-color 0.2s;
+    margin-top: 0; /* Remove margem superior do input */
 }
 
 input[type="number"]:focus {
-    border-color: #ffcc66; /* Destaca com dourado ao focar */
+    border-color: #ffcc66; 
     outline: none;
 }
+/* ----------------------------------------------------------- */
+
 
 button {
-    /* Botão estilo "Action Bar" */
     background-color: #005f56; 
-    color: #ffcc66; /* Texto dourado no botão */
+    color: #ffcc66; 
     padding: 12px 20px;
     border: 2px solid #5d4037;
     border-radius: 4px;
@@ -78,7 +86,7 @@ button {
 }
 
 button:hover {
-    background-color: #00897b; /* Verde Tibia mais claro */
+    background-color: #00897b; 
     border-color: #ffcc66;
 }
 
@@ -86,17 +94,19 @@ h2 {
     border-top: 2px solid #5d4037;
     padding-top: 15px;
     margin-top: 20px;
-    color: #ffcc66; /* Título de resultado em dourado */
+    color: #ffcc66; 
 }
 
 p {
+    /* Ajustamos o Flexbox também para os resultados */
+    display: flex;
+    justify-content: space-between;
     font-size: 1.1em;
     margin: 5px 0;
     color: #f0e6d2;
 }
 
-/* Cores de destaque para os resultados (GPs) */
 #baseTotalCost, #costPerMinute, #realTotalCost {
     font-weight: bold;
-    color: #d84315; /* Vermelho/Laranja de valor importante */
+    color: #d84315; 
 }
