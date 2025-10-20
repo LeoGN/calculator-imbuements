@@ -3,13 +3,13 @@ function calculateCost() {
     const goldTokensPrice = parseFloat(document.getElementById('goldTokensPrice').value);
     const qtyImbuements = parseInt(document.getElementById('qtyImbuements').value);
     const gtUsed = parseInt(document.getElementById('gtUsed').value);
-    const itemsCost = parseFloat(document.getElementById('itemsCost').value);
+    const timeSpentMinutes = parseFloat(document.getElementById('timeSpentMinutes').value); // Novo campo
 
     // Variáveis fixas do imbuement (Powerful = 20 horas)
-    const DURATION_MINUTES = 1200; 
+    const DURATION_IMBUE_MINUTES = 1200; // Duração de 20 horas em minutos
     const SERVICE_FEE_PER_IMBUE = 250000; 
 
-    // 2. Calcula os componentes do custo
+    // 2. Calcula os componentes do custo BASE (para 20 horas)
     
     // a) Valor Total de Gold Tokens
     const totalGtValue = gtUsed * goldTokensPrice;
@@ -17,16 +17,17 @@ function calculateCost() {
     // b) Taxa de Serviço
     const totalServiceFee = qtyImbuements * SERVICE_FEE_PER_IMBUE;
 
-    // c) Custo do Imbuement (considerando GTs OU Itens, o maior é usado, mas para simplificar vamos somar e o usuário deve colocar 0 em quem não usar)
-    const costOfMaterials = totalGtValue + itemsCost; // Usuário escolhe: se usar GT, coloca o custo dos itens como 0. Se usar itens, coloca GTs como 0.
+    // 3. Custo Total BASE do Imbuement (para 20 horas)
+    const baseTotalCost = totalGtValue + totalServiceFee;
     
-    // 3. Custo Total (GPs)
-    const totalCost = costOfMaterials + totalServiceFee;
-    
-    // 4. Custo por Minuto
-    const costPerMinute = totalCost / DURATION_MINUTES;
+    // 4. Custo por Minuto (calculado a partir do custo base de 20 horas)
+    const costPerMinute = baseTotalCost / DURATION_IMBUE_MINUTES;
 
-    // 5. Exibe os resultados na tela
-    document.getElementById('totalCost').textContent = totalCost.toLocaleString('pt-BR');
+    // 5. Custo Total Real com o Tempo Gasto informado pelo usuário
+    const realTotalCost = costPerMinute * timeSpentMinutes;
+
+    // 6. Exibe os resultados na tela
+    document.getElementById('baseTotalCost').textContent = baseTotalCost.toLocaleString('pt-BR');
     document.getElementById('costPerMinute').textContent = costPerMinute.toFixed(2).toLocaleString('pt-BR'); 
+    document.getElementById('realTotalCost').textContent = realTotalCost.toLocaleString('pt-BR');
 }
