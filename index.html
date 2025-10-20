@@ -4,36 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Imbuement Tibia</title>
-    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="calculator-container">
-        <h1>CUSTO DE IMBUEMENT POR MINUTO POR GOLD TOKEN</h1>
+        <h1>Custo de Imbuement por Minuto</h1>
         
-        <label for="goldTokensPrice">1. Preço Unitário do Gold Token (GPs):</label>
-        <input type="number" id="goldTokensPrice" value="" min="0"> 
+        <div class="input-group">
+            <label for="goldTokensPrice">1. Preço Unitário do Gold Token (GPs):</label>
+            <input type="number" id="goldTokensPrice" value="18000" min="0"> 
+        </div>
 
-        <label for="qtyImbuements">2. Quantidade de Imbuements utilizados:</label>
-        <input type="number" id="qtyImbuements" value="" min="1">
+        <div class="input-group">
+            <label for="qtyImbuements">2. Quantidade de Imbuements (1, 2, ou 3):</label>
+            <input type="number" id="qtyImbuements" value="1" min="1" max="3">
+        </div>
 
-        <label for="gtUsed">3. Quantidade de Gold Tokens utilizados:</label>
-        <input type="number" id="gtUsed" value="" min="0"> 
+        <div class="input-group">
+            <label for="gtUsed">3. Gold Tokens Usados (Total para 1 Imbuement):</label>
+            <input type="number" id="gtUsed" value="45" min="0"> 
+        </div>
         
-        <label for="timeSpentMinutes">4. Tempo Gasto de imbuement (em Minutos):</label>
-        <input type="number" id="timeSpentMinutes" value="" min="0"> 
+        <div class="input-group">
+            <label for="timeSpentMinutes">4. Tempo Gasto (em Minutos) para Calcular Custo Total Real:</label>
+            <input type="number" id="timeSpentMinutes" value="1200" min="0"> 
+        </div>
 
-        <button onclick="calculateCost()">CALCULAR CUSTO</button>
+        <button onclick="calculateCost()">Calcular Custo</button>
         
-        <h2>RESULTADO:</h2>
-        <p>Custo Total do Imbuement (20h): <span id="baseTotalCost">0</span> GPs</p>
-        
+        <h2>Resultado:</h2>
+        <p>Custo Total Base do Imbuement (20h): <span id="baseTotalCost">0</span> GPs</p>
         <p>Custo por Minuto (GPs/min): <span id="costPerMinute">0</span> GPs</p>
-        
         <p>Custo Total Real com Tempo Gasto: <span id="realTotalCost">0</span> GPs</p>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
-
-
