@@ -21,7 +21,7 @@ body {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5), inset 0 0 5px rgba(255, 255, 255, 0.1); 
     border: 3px solid #5d4037; 
     width: 90%;
-    max-width: 700px;
+    max-width: 500px;
 }
 
 h1 {
@@ -102,7 +102,7 @@ p {
     display: flex;
     justify-content: space-between;
     font-size: 1.1em;
-    margin: 2px 0;
+    margin: 5px 0;
     color: #f0e6d2;
 }
 
@@ -110,5 +110,6 @@ p {
     font-weight: bold;
     color: #d84315; 
 }
+
 
 
