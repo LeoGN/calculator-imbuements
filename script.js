@@ -1,31 +1,35 @@
-function calcularCustoImbuement(quantidade, precoGoldToken) {
-    // Valores fixos
-    const goldTokensPorImbuement = 20;
-    const taxaBasePorImbuement = 250000;
-    const duracaoMinutosPorImbuement = 1200; // 20 horas * 60 minutos
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Imbuement</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>⚔️ Custo de Imbuement (Tibia) 🛡️</h1>
+    </header>
+    <main>
+        <div class="input-group">
+            <label for="quantidade">Quantidade de Imbuements (1-3):</label>
+            <input type="number" id="quantidade" min="1" max="3" value="1">
+        </div>
 
-    // 1. Custo dos Gold Tokens
-    const custoTokens = quantidade * goldTokensPorImbuement * precoGoldToken;
+        <div class="input-group">
+            <label for="precoToken">Valor de 1 Gold Token (gp):</label>
+            <input type="number" id="precoToken" placeholder="Ex: 18000" required>
+        </div>
 
-    // 2. Custo da Taxa
-    const custoTaxa = quantidade * taxaBasePorImbuement;
+        <button id="calcularBtn">Calcular</button>
 
-    // 3. Custo Total
-    const custoTotal = custoTokens + custoTaxa;
+        <section id="resultado">
+            <h2>Resultados:</h2>
+            <p>Custo Total: <span id="resultadoTotal">0 gp</span></p>
+            <p>Custo por Minuto: <span id="resultadoMinuto">0 gp/min</span></p>
+        </section>
+    </main>
 
-    // 4. Duração Total (em minutos)
-    const duracaoTotalMinutos = quantidade * duracaoMinutosPorImbuement;
-
-    // 5. Custo por Minuto
-    const custoPorMinuto = custoTotal / duracaoTotalMinutos;
-
-    return {
-        custoTotal: custoTotal,
-        custoPorMinuto: custoPorMinuto
-    };
-}
-
-// Exemplo de chamada:
-// const resultado = calcularCustoImbuement(3, 18000); 
-// console.log("Custo Total: " + resultado.custoTotal); 
-// console.log("Custo por Minuto: " + resultado.custoPorMinuto);
+    <script src="js/script.js"></script> 
+    </body>
+</html>
