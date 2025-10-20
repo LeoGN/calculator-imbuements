@@ -1,35 +1,20 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Calculadora de Custo por Minuto (Imbuement)</title>
-    <style>
-        body { font-family: Arial, sans-serif; padding: 20px; }
-        input { margin-bottom: 10px; padding: 8px; width: 200px; display: block; }
-        label { font-weight: bold; display: block; margin-top: 10px; }
-        button { padding: 10px 15px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
-        #resultado { margin-top: 20px; padding: 15px; border: 1px solid #ccc; background-color: #f9f9f9; }
-    </style>
 </head>
 <body>
     <h1>Calculadora de Custo por Minuto de Imbuement</h1>
     
     <p>Insira os valores atuais do seu servidor:</p>
 
-    <label for="qtd_gt">1. Quantidade de Gold Tokens para o Imbuement (por Imbuement):</label>
-    <input type="number" id="qtd_gt" value="6" placeholder="Ex: 6 para um T3">
+    <label for="qtd_gt">1. Quantidade de Gold Tokens utilizados:</label>
+    <input type="number" id="qtd_gt" value="6" placeholder="Ex: 6">
 
-    <label for="valor_gt">2. Valor de Venda de 1 Gold Token (gp):</label>
+    <label for="valor_gt">2. Valor de cada Gold Token (gp):</label>
     <input type="number" id="valor_gt" placeholder="Ex: 30000">
     
-    <label for="taxa_imbuement">3. Taxa de Serviço Fixa (A taxa real será 250k x Qtd. Imbuements):</label>
-    <input type="number" id="taxa_imbuement" value="50000" placeholder="Ex: 50000"> 
+    <label for="qtd_imbuements">3. Quantidade de Imbuements que fará:</label>
+    <input type="number" id="qtd_imbuements" value="1" min="1" placeholder="Ex: 1+"> 
 
     <label for="duracao_horas">4. Duração Total do Imbuement (horas):</label>
-    <input type="number" id="duracao_horas" value="20" placeholder="Padrão é 20h para T3">
-
-    <label for="qtd_imbuements">5. Quantidade de Imbuements que fará:</label>
-    <input type="number" id="qtd_imbuements" value="1" min="1" placeholder="Ex: 1 ou 3">
+    <input type="number" id="duracao_horas" value="20" placeholder="Padrão é 20h">
     
     <br>
     
