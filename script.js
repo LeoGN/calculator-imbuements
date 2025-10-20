@@ -1,58 +1,32 @@
-/**
- * CALCULA O CUSTO POR MINUTO DE IMBUMENT NO TIBIA.
- * * @param {number} quantidadeImbuements - Número de imbuements a serem aplicados (1, 2 ou 3).
- * @param {number} precoGoldToken - Preço de um Gold Token em gold.
- * @returns {object} Um objeto contendo o custo total e o custo por minuto.
- */
-function calcularCustoImbuement(quantidadeImbuements, precoGoldToken) {
-    // 1. Definições de custos e duração (valores fixos do Tibia)
-    const goldTokensPorImbuement = 20;
-    const taxaBasePorImbuement = 250000; // 250k
-    const duracaoHoras = 20;
-    const duracaoMinutosPorImbuement = duracaoHoras * 60; // 1200 minutos
+function calculateCost() {
+    // 1. Coleta os valores do formulário
+    const goldTokensPrice = parseFloat(document.getElementById('goldTokensPrice').value);
+    const qtyImbuements = parseInt(document.getElementById('qtyImbuements').value);
+    const gtUsed = parseInt(document.getElementById('gtUsed').value);
+    const itemsCost = parseFloat(document.getElementById('itemsCost').value);
 
-    // --- CÁLCULO DO CUSTO TOTAL (GP) ---
+    // Variáveis fixas do imbuement (Powerful = 20 horas)
+    const DURATION_MINUTES = 1200; 
+    const SERVICE_FEE_PER_IMBUE = 250000; 
 
-    // a) Custo dos Gold Tokens: quantidade * 20 tokens * preço unitário
-    const custoTokens = quantidadeImbuements * goldTokensPorImbuement * precoGoldToken;
+    // 2. Calcula os componentes do custo
+    
+    // a) Valor Total de Gold Tokens
+    const totalGtValue = gtUsed * goldTokensPrice;
+    
+    // b) Taxa de Serviço
+    const totalServiceFee = qtyImbuements * SERVICE_FEE_PER_IMBUE;
 
-    // b) Custo da Taxa (Shrine Fee): quantidade * 250.000
-    const custoTaxa = quantidadeImbuements * taxaBasePorImbuement;
+    // c) Custo do Imbuement (considerando GTs OU Itens, o maior é usado, mas para simplificar vamos somar e o usuário deve colocar 0 em quem não usar)
+    const costOfMaterials = totalGtValue + itemsCost; // Usuário escolhe: se usar GT, coloca o custo dos itens como 0. Se usar itens, coloca GTs como 0.
+    
+    // 3. Custo Total (GPs)
+    const totalCost = costOfMaterials + totalServiceFee;
+    
+    // 4. Custo por Minuto
+    const costPerMinute = totalCost / DURATION_MINUTES;
 
-    // c) Custo Total (Tokens + Taxa)
-    const custoTotal = custoTokens + custoTaxa;
-
-    // --- CÁLCULO DA DURAÇÃO E CUSTO POR MINUTO ---
-
-    // d) Duração Total: quantidade * 1200 minutos
-    const duracaoTotalMinutos = quantidadeImbuements * duracaoMinutosPorImbuement;
-
-    // e) Custo por Minuto: Custo Total / Duração Total
-    // O custo é arredondado para duas casas decimais para clareza
-    const custoPorMinuto = custoTotal / duracaoTotalMinutos;
-    const custoPorMinutoArredondado = parseFloat(custoPorMinuto.toFixed(2));
-
-
-    return {
-        custoTotal: custoTotal,
-        duracaoTotalMinutos: duracaoTotalMinutos,
-        custoPorMinuto: custoPorMinutoArredondado
-    };
+    // 5. Exibe os resultados na tela
+    document.getElementById('totalCost').textContent = totalCost.toLocaleString('pt-BR');
+    document.getElementById('costPerMinute').textContent = costPerMinute.toFixed(2).toLocaleString('pt-BR'); 
 }
-
-// O restante deste arquivo (funções para ler o HTML e exibir o resultado)
-// deve ser adicionado por você. Exemplo de como usar a função:
-/*
-document.getElementById('calcularBtn').addEventListener('click', () => {
-    const qtde = parseInt(document.getElementById('quantidade').value);
-    const preco = parseInt(document.getElementById('precoToken').value);
-
-    if (qtde > 0 && preco > 0) {
-        const resultado = calcularCustoImbuement(qtde, preco);
-        document.getElementById('resultadoTotal').textContent = resultado.custoTotal.toLocaleString('pt-BR') + ' gp';
-        document.getElementById('resultadoMinuto').textContent = resultado.custoPorMinuto.toLocaleString('pt-BR') + ' gp/min';
-    } else {
-        alert("Preencha todos os campos corretamente!");
-    }
-});
-*/
