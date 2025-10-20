@@ -1,19 +1,32 @@
-# ⚔️ Calculadora de Custo de Imbuement no Tibia 🛡️
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Imbuement Tibia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculator-container">
+        <h1>Custo de Imbuement por Minuto</h1>
+        
+        <label for="goldTokens">1. Preço Unitário do Gold Token (GPs):</label>
+        <input type="number" id="goldTokensPrice" value="18000"> 
 
-Uma ferramenta simples para calcular o custo por minuto de um ou mais Imbuements no Tibia, ajudando a planejar seus gastos de caça.
+        <label for="qtyImbuements">2. Quantidade de Imbuements (1, 2, ou 3):</label>
+        <input type="number" id="qtyImbuements" value="1" min="1" max="3">
 
-## 🚀 Como Funciona
+        <label for="gtUsed">3. Gold Tokens Usados (Total):</label>
+        <input type="number" id="gtUsed" value="45" min="0"> 
+        <label for="itemsCost">4. Custo dos Itens de Criatura (em GPs):</label>
+        <input type="number" id="itemsCost" value="0"> 
+        <button onclick="calculateCost()">Calcular Custo por Minuto</button>
+        
+        <h2>Resultado:</h2>
+        <p>Custo Total do Imbuement (20h): <span id="totalCost">0</span> GPs</p>
+        <p>Custo por Minuto (GPs/min): <span id="costPerMinute">0</span> GPs</p>
+    </div>
 
-A calculadora utiliza uma fórmula baseada no custo dos **Gold Tokens** e na **Taxa de Imbuement**.
-
-### 🔍 Fórmula de Cálculo
-
-1.  **Custo Total do Imbuement**
-    $$\text{Custo Total} = (\text{Quantidade de Imbuements} \times \text{Preço do Gold Token} \times 20) + (\text{Quantidade de Imbuements} \times 250.000 \text{ gold})$$
-
-    * *Nota:* Cada Imbuement exige 20 Gold Tokens.
-2.  **Duração Total**
-    * Cada Imbuement dura 20 horas ($$1200$$ minutos).
-    * $$\text{Duração Total (minutos)} = \text{Quantidade de Imbuements} \times 1200$$
-3.  **Custo por Minuto**
-    $$\text{Custo por Minuto} = \frac{\text{Custo Total}}{\text{Duração Total (minutos)}}$$
+    <script src="script.js"></script>
+</body>
+</html>
