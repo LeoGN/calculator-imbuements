@@ -111,5 +111,13 @@ p {
     color: #d84315; 
 }
 
-
-
+.note {
+    font-size: 0.75em; /* Fonte menor */
+    color: #a8a8a8;    /* Cor mais suave */
+    margin-top: 15px;  /* Um pouco mais de espaço acima */
+    text-align: center; /* Centraliza o texto da nota */
+    font-style: italic; /* Texto em itálico */
+    border-top: 1px dashed #5d4037; /* Linha tracejada sutil acima da nota */
+    padding-top: 10px;
+    display: block; /* Garante que ocupe a largura total */
+}
