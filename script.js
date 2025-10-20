@@ -1,50 +1,63 @@
+// O custo base de serviço (taxa do NPC) que será multiplicado pela quantidade de imbuements
+const CUSTO_BASE_TAXA_POR_IMBUE = 250000;
+
 function calcularCustoPorMinuto() {
     // 1. Coletar os valores de entrada do HTML
     const qtdGoldTokens = parseFloat(document.getElementById('qtd_gt').value);
     const valorGoldToken = parseFloat(document.getElementById('valor_gt').value);
-    const taxaImbuement = parseFloat(document.getElementById('taxa_imbuement').value);
+    // A taxa de serviço manual (taxa_imbuement) é ignorada no cálculo, mas o campo é lido
     const duracaoHoras = parseFloat(document.getElementById('duracao_horas').value);
+    
+    // Campo crucial para a nova regra
+    const qtdImbuements = parseInt(document.getElementById('qtd_imbuements').value);
+    
     const resultadoElement = document.getElementById('resultado');
 
     // 2. Validação básica das entradas
-    if (isNaN(qtdGoldTokens) || isNaN(valorGoldToken) || isNaN(taxaImbuement) || isNaN(duracaoHoras) || duracaoHoras <= 0) {
-        resultadoElement.textContent = "Por favor, insira valores numéricos válidos e uma duração maior que zero.";
+    if (isNaN(qtdGoldTokens) || isNaN(valorGoldToken) || isNaN(duracaoHoras) || duracaoHoras <= 0 || isNaN(qtdImbuements) || qtdImbuements < 1) {
+        resultadoElement.textContent = "Por favor, insira valores numéricos válidos (Quantidade de Imbuements deve ser no mínimo 1).";
         resultadoElement.style.color = "red";
         return;
     }
 
-    // 3. Conversão e Cálculo
+    // 3. Cálculo da Taxa Total do Serviço (NOVA REGRA)
+    const taxaServicoTotal = CUSTO_BASE_TAXA_POR_IMBUE * qtdImbuements;
 
-    // Duração total em minutos (20 horas é o padrão para Tier 3)
-    const duracaoTotalMinutos = duracaoHoras * 60; 
+    // 4. Conversão e Cálculo
 
-    // Custo total dos Gold Tokens
-    const custoGoldTokens = qtdGoldTokens * valorGoldToken;
+    // Duração total em minutos (multiplica pela quantidade de imbuements)
+    const duracaoTotalMinutos = duracaoHoras * 60 * qtdImbuements; 
 
-    // Custo total do Imbuement (Gold Tokens + Taxa)
-    const custoTotal = custoGoldTokens + taxaImbuement;
+    // Custo total dos Gold Tokens (Material)
+    // Custo por imbue * valor do GT * quantidade de imbuements
+    const custoGoldTokensTotal = qtdGoldTokens * valorGoldToken * qtdImbuements;
 
-    // Custo por minuto
+    // Custo total final (Materiais totais + Taxa total de serviço)
+    const custoTotal = custoGoldTokensTotal + taxaServicoTotal;
+
+    // Custo por minuto 
     const custoPorMinuto = custoTotal / duracaoTotalMinutos;
 
-    // 4. Exibir o resultado
+    // 5. Exibir o resultado
     
-    // Formatação para exibir com casas decimais e separador de milhares
+    // Formatação
     const custoTotalFormatado = custoTotal.toLocaleString('pt-BR', { maximumFractionDigits: 0 });
     const custoPorMinutoFormatado = custoPorMinuto.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const taxaServicoFormatada = taxaServicoTotal.toLocaleString('pt-BR', { maximumFractionDigits: 0 });
 
     resultadoElement.style.color = "black";
     resultadoElement.innerHTML = `
         <br>
-        <h2>Resultado do Custo do Imbuement</h2>
-        <p><strong>Custo Total (GT + Taxa):</strong> ${custoTotalFormatado} gold pieces (gp)</p>
+        <h2>Resultado do Custo (Para ${qtdImbuements} Imbuement(s))</h2>
+        <p><strong>Custo de Materiais (GT):</strong> ${custoGoldTokensTotal.toLocaleString('pt-BR')} gp</p>
+        <p><strong>Taxa de Serviço Total (${CUSTO_BASE_TAXA_POR_IMBUE.toLocaleString('pt-BR')} gp/imbue):</strong> ${taxaServicoFormatada} gp</p>
+        <p><strong>Custo Total Final:</strong> ${custoTotalFormatado} gold pieces (gp)</p>
         <p><strong>Duração Total:</strong> ${duracaoTotalMinutos} minutos</p>
         <p><strong>Custo Gasto por Minuto:</strong> <span style="font-size: 1.2em; font-weight: bold; color: green;">${custoPorMinutoFormatado} gp/minuto</span></p>
     `;
 }
 
-// Opcional: Adiciona o cálculo da duração padrão (20 horas) ao carregar a página
+// Inicialização opcional: Define o valor padrão de 20 horas no campo de duração.
 document.addEventListener('DOMContentLoaded', (event) => {
-    // Define 20 horas como padrão para Imbuement Tier 3
     document.getElementById('duracao_horas').value = 20; 
 });
