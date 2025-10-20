@@ -1,7 +1,14 @@
+/* --- TIBIA THEME: Cores escuras, bordas grossas, fontes de RPG --- */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+/* Importa uma fonte estilo monospaced/pixel art, ideal para um tema de RPG/Console */
+
 body {
-    font-family: sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
+    /* Fundo sutil de "pedra" ou "pergaminho" */
+    background-color: #333; /* Cor de backup */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><rect fill="#444444" width="20" height="20"/><rect x="0" y="0" width="10" height="10" fill="#555555"/><rect x="10" y="10" width="10" height="10" fill="#555555"/></svg>');
+    color: #f0e6d2; /* Cor de texto claro, como pergaminho */
+    font-family: 'Roboto Mono', monospace; /* Fonte com tema de console */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,65 +17,86 @@ body {
 }
 
 .calculator-container {
-    background-color: #fff;
+    /* Fundo escuro como uma janela do cliente Tibia */
+    background-color: #2e2e2e; 
     padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px; /* Bordas mais quadradas */
+    /* Sombra interna para dar um efeito de profundidade de janela de UI */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5), inset 0 0 5px rgba(255, 255, 255, 0.1); 
+    border: 3px solid #5d4037; /* Borda grossa de madeira/ferro */
     width: 90%;
-    max-width: 400px;
+    max-width: 450px;
 }
 
 h1 {
-    color: #004d40; 
+    /* Título em cor de destaque */
+    color: #ffcc66; /* Cor dourada/amarelada */
     text-align: center;
+    border-bottom: 2px solid #5d4037;
+    padding-bottom: 10px;
 }
 
 label {
     display: block;
     margin-top: 15px;
     font-weight: bold;
-    color: #00695c;
+    color: #a8a8a8; /* Cinza claro para o texto */
+    font-size: 0.95em;
 }
 
 input[type="number"] {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    background-color: #1a1a1a; /* Fundo do input bem escuro */
+    color: #ffffff; /* Texto do input branco */
+    border: 1px solid #5d4037;
+    border-radius: 2px;
     box-sizing: border-box; 
+    transition: border-color 0.2s;
+}
+
+input[type="number"]:focus {
+    border-color: #ffcc66; /* Destaca com dourado ao focar */
+    outline: none;
 }
 
 button {
-    background-color: #00897b; 
-    color: white;
+    /* Botão estilo "Action Bar" */
+    background-color: #005f56; 
+    color: #ffcc66; /* Texto dourado no botão */
     padding: 12px 20px;
-    border: none;
+    border: 2px solid #5d4037;
     border-radius: 4px;
     cursor: pointer;
     width: 100%;
-    margin-top: 20px;
-    font-size: 16px;
-    transition: background-color 0.3s;
+    margin-top: 25px;
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
 button:hover {
-    background-color: #004d40;
+    background-color: #00897b; /* Verde Tibia mais claro */
+    border-color: #ffcc66;
 }
 
 h2 {
-    border-top: 2px solid #e0e0e0;
+    border-top: 2px solid #5d4037;
     padding-top: 15px;
     margin-top: 20px;
-    color: #004d40;
+    color: #ffcc66; /* Título de resultado em dourado */
 }
 
 p {
     font-size: 1.1em;
     margin: 5px 0;
+    color: #f0e6d2;
 }
 
+/* Cores de destaque para os resultados (GPs) */
 #baseTotalCost, #costPerMinute, #realTotalCost {
     font-weight: bold;
-    color: #d84315; 
+    color: #d84315; /* Vermelho/Laranja de valor importante */
 }
