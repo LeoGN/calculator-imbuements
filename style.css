@@ -68,7 +68,7 @@ p {
     margin: 5px 0;
 }
 
-#totalCost, #costPerMinute {
+#baseTotalCost, #costPerMinute, #realTotalCost {
     font-weight: bold;
     color: #d84315; 
 }
